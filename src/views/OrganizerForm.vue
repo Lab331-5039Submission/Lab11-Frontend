@@ -7,7 +7,7 @@
       <BaseInput v-model="organizer.name" type="text" label="Title" />
 
       <h3>The image of the Organizer</h3>
-      <UploadImages @changed="handleImages" />
+      <UploadImages @changed="handleImages" :max="1" />
 
       <button type="submit">Submit</button>
     </form>
@@ -45,7 +45,7 @@ export default {
           OrganizerService.saveOrganizer(this.organizer).then((response) => {
             console.log(response)
             this.$router.push({
-               name: 'EventLayout',
+               name: 'OrganizerLayout',
                params: { id: response.data.id }
             })
             this.GStore.flashMessage =
